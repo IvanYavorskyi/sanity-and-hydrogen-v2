@@ -49,9 +49,16 @@ async function loadCriticalData({
     throw new Error('Expected product handle to be defined');
   }
 
+  const {country, language} = storefront.i18n;
+
   const [{product}] = await Promise.all([
     storefront.query(PRODUCT_QUERY, {
-      variables: {handle, selectedOptions: getSelectedProductOptions(request)},
+      variables: {
+        country,
+        language,
+        handle,
+        selectedOptions: getSelectedProductOptions(request),
+      },
     }),
     // Add other queries here, so that they are loaded in parallel
   ]);
