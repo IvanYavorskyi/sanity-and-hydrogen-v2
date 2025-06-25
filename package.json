@@ -12,10 +12,12 @@
     "codegen": "shopify hydrogen codegen"
   },
   "prettier": "@shopify/prettier-config",
+  "overrides": {
+    "@remix-run/vercel": "1.19.3"
+  },
   "dependencies": {
     "@portabletext/react": "^3.2.1",
     "@remix-run/dev": "^2.16.8",
-    "@remix-run/vercel": "^1.19.3",
     "@sanity/client": "^7.6.0",
     "@shopify/hydrogen": "2025.5.0",
     "@shopify/remix-oxygen": "^3.0.0",
@@ -71,5 +73,6 @@
   },
   "browserslist": [
     "defaults"
-  ]
+  ],
+  "type": "module"
 }
