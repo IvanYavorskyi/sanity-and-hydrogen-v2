@@ -7,35 +7,21 @@ export default defineConfig({
   plugins: [
     hydrogen(),
     remix({
-      presets: [hydrogen.preset()],
-      ignoredRouteFiles: ['**/.*'],
+      // ← use v3preset(), not preset()
+      presets: [hydrogen.v3preset()],
+      // your future flags here (opt-in to React Router 7 behaviors)
       future: {
-        v3_fetcherPersist: false,
-        v3_relativeSplatPath: false,
-        v3_throwAbortReason: false,
-        v3_routeConfig: false,
+        v3_fetcherPersist: true,
+        v3_relativeSplatPath: true,
+        v3_throwAbortReason: true,
+        v3_lazyRouteDiscovery: true,
+        v3_routeConfig: true,
+        v3_singleFetch: true,
       },
+      ignoredRouteFiles: ['**/.*'],
     }),
     tsconfigPaths(),
   ],
-  build: {
-    // Allow a strict Content-Security-Policy
-    // withtout inlining assets as base64:
-    assetsInlineLimit: 0,
-  },
-  ssr: {
-    optimizeDeps: {
-      /**
-       * Include dependencies here if they throw CJS<>ESM errors.
-       * For example, for the following error:
-       *
-       * > ReferenceError: module is not defined
-       * >   at /Users/.../node_modules/example-dep/index.js:1:1
-       *
-       * Include 'example-dep' in the array below.
-       * @see https://vitejs.dev/config/dep-optimization-options
-       */
-      include: [],
-    },
-  },
+  build: {assetsInlineLimit: 0},
+  ssr: {optimizeDeps: {include: []}},
 });
