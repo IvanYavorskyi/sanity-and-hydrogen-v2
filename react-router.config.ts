@@ -6,5 +6,4 @@ export default {
   appDirectory: 'app',
   buildDirectory: 'dist',
   ssr: true,
-  presets: [vercelPreset()],
 } satisfies Config;
