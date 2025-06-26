@@ -1,4 +1,15 @@
 {
-  "$schema": "https://openapi.vercel.sh/vercel.json",
-  "framework": "react-router"
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist/client",
+  "functions": {
+    "dist/server/index.js": {
+      "runtime": "nodejs18.x"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/api/server"
+    }
+  ]
 }
