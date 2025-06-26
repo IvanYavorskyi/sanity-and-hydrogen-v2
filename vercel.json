@@ -1,15 +1,15 @@
 {
+  "framework": null,
   "buildCommand": "npm run build",
   "outputDirectory": "dist/client",
-  "functions": {
-    "dist/server/index.js": {
-      "runtime": "nodejs18.x"
-    }
-  },
-  "rewrites": [
+  "installCommand": "npm install",
+  "routes": [
     {
-      "source": "/(.*)",
-      "destination": "/api/server"
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
   ]
 }
