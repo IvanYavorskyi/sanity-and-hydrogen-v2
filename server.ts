@@ -1,6 +1,6 @@
 // @ts-ignore
 // Virtual entry point for the app
-import * as remixBuild from 'virtual:remix/server-build';
+// import * as remixBuild from 'virtual:remix/server-build';
 import {
   cartGetIdDefault,
   cartSetIdDefault,
@@ -15,6 +15,7 @@ import {
   type SessionStorage,
   type Session,
 } from '@shopify/remix-oxygen';
+import { CART_QUERY_FRAGMENT } from '~/lib/fragments';
 
 /**
  * Export a fetch handler in module format.
@@ -150,105 +151,107 @@ export class HydrogenSession {
   }
 }
 
-// NOTE: https://shopify.dev/docs/api/storefront/latest/queries/cart
-const CART_QUERY_FRAGMENT = `#graphql
-  fragment Money on MoneyV2 {
-    currencyCode
-    amount
-  }
-  fragment CartLine on CartLine {
-    id
-    quantity
-    attributes {
-      key
-      value
-    }
-    cost {
-      totalAmount {
-        ...Money
-      }
-      amountPerQuantity {
-        ...Money
-      }
-      compareAtAmountPerQuantity {
-        ...Money
-      }
-    }
-    merchandise {
-      ... on ProductVariant {
-        id
-        availableForSale
-        compareAtPrice {
-          ...Money
-        }
-        price {
-          ...Money
-        }
-        requiresShipping
-        title
-        image {
-          id
-          url
-          altText
-          width
-          height
+// // NOTE: https://shopify.dev/docs/api/storefront/latest/queries/cart
+// const CART_QUERY_FRAGMENT = `#graphql
+//   fragment Money on MoneyV2 {
+//     currencyCode
+//     amount
+//   }
+//   fragment CartLine on CartLine {
+//     id
+//     quantity
+//     attributes {
+//       key
+//       value
+//     }
+//     cost {
+//       totalAmount {
+//         ...Money
+//       }
+//       amountPerQuantity {
+//         ...Money
+//       }
+//       compareAtAmountPerQuantity {
+//         ...Money
+//       }
+//     }
+//     merchandise {
+//       ... on ProductVariant {
+//         id
+//         availableForSale
+//         compareAtPrice {
+//           ...Money
+//         }
+//         price {
+//           ...Money
+//         }
+//         requiresShipping
+//         title
+//         image {
+//           id
+//           url
+//           altText
+//           width
+//           height
 
-        }
-        product {
-          handle
-          title
-          id
-        }
-        selectedOptions {
-          name
-          value
-        }
-      }
-    }
-  }
-  fragment CartApiQuery on Cart {
-    id
-    checkoutUrl
-    totalQuantity
-    buyerIdentity {
-      countryCode
-      customer {
-        id
-        email
-        firstName
-        lastName
-        displayName
-      }
-      email
-      phone
-    }
-    lines(first: $numCartLines) {
-      nodes {
-        ...CartLine
-      }
-    }
-    cost {
-      subtotalAmount {
-        ...Money
-      }
-      totalAmount {
-        ...Money
-      }
-      totalDutyAmount {
-        ...Money
-      }
-      totalTaxAmount {
-        ...Money
-      }
-    }
-    note
-    attributes {
-      key
-      value
-    }
-    discountCodes {
-      code
-      applicable
-    }
-  }
-` as const;
+//         }
+//         product {
+//           handle
+//           title
+//           id
+//         }
+//         selectedOptions {
+//           name
+//           value
+//         }
+//       }
+//     }
+//   }
+//   fragment CartApiQuery on Cart {
+//     id
+//     checkoutUrl
+//     totalQuantity
+//     buyerIdentity {
+//       countryCode
+//       customer {
+//         id
+//         email
+//         firstName
+//         lastName
+//         displayName
+//       }
+//       email
+//       phone
+//     }
+//     lines(first: $numCartLines) {
+//       nodes {
+//         ...CartLine
+//       }
+//     }
+//     cost {
+//       subtotalAmount {
+//         ...Money
+//       }
+//       totalAmount {
+//         ...Money
+//       }
+//       totalDutyAmount {
+//         ...Money
+//       }
+//       totalTaxAmount {
+//         ...Money
+//       }
+//     }
+//     note
+//     attributes {
+//       key
+//       value
+//     }
+//     discountCodes {
+//       code
+//       applicable
+//     }
+//   }
+// ` as const;
+
+// export {default} from 'virtual:hydrogen/entry-server';

@@ -21,6 +21,7 @@
     "@sanity/client": "^7.6.0",
     "@shopify/hydrogen": "2025.5.0",
     "@shopify/remix-oxygen": "^3.0.0",
+    "@vercel/react-router": "^1.1.2",
     "graphql": "^16.10.0",
     "graphql-tag": "^2.12.6",
     "hydrogen-sanity": "^4.3.3",
@@ -30,9 +31,7 @@
     "react-router": "7.6.0",
     "react-router-dom": "7.6.0",
     "semver": "^7.7.2",
-    "tailwindcss": "^4.1.6",
-    "vite": "^7.0.0",
-    "vite-tsconfig-paths": "^5.1.4"
+    "tailwindcss": "^4.1.6"
   },
   "devDependencies": {
     "@eslint/compat": "^1.2.5",
@@ -53,6 +52,7 @@
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^8.21.0",
     "@typescript-eslint/parser": "^8.21.0",
+    "autoprefixer": "^10.4.21",
     "eslint": "^9.18.0",
     "eslint-config-prettier": "^10.0.1",
     "eslint-import-resolver-typescript": "^3.7.0",
