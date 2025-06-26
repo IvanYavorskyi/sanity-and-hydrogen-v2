@@ -1,15 +1,15 @@
 {
-  "framework": null,
   "buildCommand": "npm run build",
   "outputDirectory": "dist/client",
-  "installCommand": "npm install",
-  "routes": [
+  "serverlessFunctions": {
+    "dist/server/index.js": {
+      "runtime": "nodejs20.x"
+    }
+  },
+  "rewrites": [
     {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
+      "source": "/(.*)",
+      "destination": "/api/index"
     }
   ]
 }
